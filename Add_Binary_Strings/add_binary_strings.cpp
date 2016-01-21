@@ -3,7 +3,7 @@
 
 int main(){
        
-    std::string a="11", b="11";
+    std::string a="101010", b="100";
     std::cout << addBinary(a,b);
     return 1;
 }

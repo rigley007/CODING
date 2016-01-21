@@ -14,13 +14,13 @@ std::string to_string(T value){
 
 std::string addBinary(std::string a, std::string b){
     int place = 2;
-    int na = a.length(), nb = b.length(), da=0, db=0, sum=0;
+    int na = a.length(), nb = b.length(), sum=0;
     int digit = 0, carry = 0;
-    std::string str="";
+    std::string str;
 
     for(int i=0; i<std::max(na,nb); i++){
-        da = int( (i<na) ? a.at(na-1-i) : 0 );
-        db = int( (i<nb) ? b.at(na-1-i) : 0 );
+        int da = ( (i<na) ? a.at(na-1-i) - '0' : 0) ;
+        int db = ( (i<nb) ? b.at(nb-1-i) - '0' : 0) ;
         sum = da + db + carry;
         digit = sum % place;
         carry = sum / place;
@@ -28,8 +28,9 @@ std::string addBinary(std::string a, std::string b){
     }
     if(carry > 0) str.append(to_string(carry));
 
+    std::reverse(str.begin(), str.end());
+
     return str;
-    //return reverse(str.begin(), str.end());
 }
 
 
